@@ -8,10 +8,14 @@
 class rational 
 {
 public:
+    
+    const int numerator;
+    const int denominator;
+
     rational(const int i) : numerator(i), denominator(1) {}
 
     rational(const int numerator_, const int denominator_) : 
-        rational(numerator_, denominator_, find_gcd(abs(numerator_), abs(denominator_))) {}
+        rational(numerator_, denominator_, find_gcd(numerator_, denominator_)) {}
 
     rational(const rational & other) : numerator(other.numerator), denominator(other.denominator){}
 
@@ -71,13 +75,11 @@ public:
 
 private:
     
-    const int numerator;
-    const int denominator;
-
-
     rational(const int numerator_, const int denominator_, const int gcd): 
-        numerator(numerator_ / gcd), denominator(denominator_ / gcd) {}
+        numerator(signum(denominator_) * numerator_ / gcd), 
+        denominator(abs(denominator_) / gcd) {}
 
     static int find_gcd(int a, int b);
-
+    
+    static int signum(int x) { return x >= 0 ? 1 : -1; }
 };
