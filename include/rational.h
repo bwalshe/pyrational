@@ -17,10 +17,10 @@ public:
     rational(const int numerator_, const int denominator_) : 
         rational(numerator_, denominator_, find_gcd(numerator_, denominator_)) {}
 
-    rational(const rational & other) : numerator(other.numerator), denominator(other.denominator){}
+    rational(const rational & other) = default;
 
-    rational(rational && other) : numerator(other.numerator), denominator(other.denominator){}
-
+    rational(rational && other) = default;
+    
     bool operator==(const rational & other) const 
     {
         return numerator == other.numerator && denominator == other.denominator;

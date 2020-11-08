@@ -4,12 +4,35 @@
 #include "rational.h"
 
 
-TEST_CASE("Denominator is always positive, numerator has correct sign", "[rational]"){
-    auto r  = GENERATE(as<rational>{},rational(-1, 2), rational(1,-2));
-    REQUIRE( r.numerator == -1);
-    REQUIRE( r.denominator == 2);
+TEST_CASE("Constructor", "[rational]") {
+    rational r(1,2);
+    REQUIRE(r.numerator == 1);
+    REQUIRE(r.denominator == 2);
 }
 
+TEST_CASE("Copy construcotr", "[rational]") {
+    rational r(1,2);
+    rational r_copy(r);
+    REQUIRE(r_copy.numerator == r.numerator);
+    REQUIRE(r_copy.denominator == r.denominator);
+}
+
+
+TEST_CASE("Move construcotr", "[rational]") {
+    rational r(rational(1, 2));
+    REQUIRE(r.numerator == 1);
+    REQUIRE(r.denominator == 2);
+}
+
+TEST_CASE("Denominator is always positive, numerator has correct sign", "[rational]"){
+    auto r = GENERATE(as<rational>{},rational(-1, 2), rational(1,-2));
+    REQUIRE(r.numerator == -1);
+    REQUIRE(r.denominator == 2);
+}
+
+TEST_CASE("Move constructor", "[rational]") {
+
+}
 TEST_CASE("numerator and denominator are coprime when numerator < denominator", 
           "[rational]") {
     rational r(2, 4);
