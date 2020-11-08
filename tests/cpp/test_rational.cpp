@@ -10,6 +10,12 @@ TEST_CASE("Constructor", "[rational]") {
     REQUIRE(r.denominator == 2);
 }
 
+TEST_CASE("Single int constructor", "[ratinal]") {
+    rational r(2);
+    REQUIRE(r.numerator == 2);
+    REQUIRE(r.denominator == 1);
+}
+
 TEST_CASE("Copy construcotr", "[rational]") {
     rational r(1,2);
     rational r_copy(r);

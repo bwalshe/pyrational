@@ -22,6 +22,8 @@ PYBIND11_MODULE(pyrational, m) {
     py::class_<rational>(m, "Rational")
         .def(py::init<int, int>())
         .def(py::init<int>())
+        .def_readonly("numerator", &rational::numerator)
+        .def_readonly("denominator", &rational::denominator)
         .def("__repr__", [](const rational &r){return static_cast<std::string>(r);})
         .def("__eq__", py::overload_cast<const rational &>(&rational::operator==, py::const_))
         .def("__eq__", py::overload_cast<const int>(&rational::operator==, py::const_))

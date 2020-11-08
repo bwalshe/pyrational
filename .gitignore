@@ -2,3 +2,7 @@ build/
 dist/
 *.egg-info
 venv
+.tox/
+.vscode/
+__pycache__
+*.pyc
