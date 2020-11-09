@@ -36,9 +36,6 @@ TEST_CASE("Denominator is always positive, numerator has correct sign", "[ration
     REQUIRE(r.denominator == 2);
 }
 
-TEST_CASE("Move constructor", "[rational]") {
-
-}
 TEST_CASE("numerator and denominator are coprime when numerator < denominator", 
           "[rational]") {
     rational r(2, 4);
