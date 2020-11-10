@@ -1,4 +1,9 @@
 FROM quay.io/pypa/manylinux2014_x86_64
+
+RUN sh -x && for PYBIN in /opt/python/*/bin; do \
+    "${PYBIN}/pip" install pytest ; \
+    done
+
 RUN git clone https://github.com/catchorg/Catch2.git \
  && cd Catch2 \
  && git checkout v2.x \
@@ -7,4 +12,4 @@ RUN git clone https://github.com/catchorg/Catch2.git \
  && cd .. \
  && rm -rf Catch2
 
-CMD ["/bin/bash"]
+CMD ["/io/builld_wheels.sh"]
